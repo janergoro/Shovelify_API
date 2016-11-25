@@ -25,6 +25,8 @@ namespace Swap.API.Controllers
                 return BadRequest(ModelState);
             }
 
+            return new System.Web.Http.Results.OkResult(this);
+
             var u = new User
             {
 
