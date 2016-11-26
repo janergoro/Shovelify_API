@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Swap.API.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -19,6 +20,22 @@ namespace Swap.API
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "ActionApi",
+                routeTemplate: "api/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Formatters.JsonFormatter.SupportedMediaTypes
+                .Add(new System.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
+
+            //using (var context = new SwapDbContext())
+            //{
+            //    context.Database.Delete();
+            //    //context.Database.Initialize(force: true);
+            //}
+
         }
     }
 }

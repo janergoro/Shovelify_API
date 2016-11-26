@@ -10,7 +10,7 @@ namespace Swap.API.Models
         public int PictureId { get; set; }
         public string FileName { get; set; }
         public string Extention { get; set; }
-        public byte[] FileData { get; set; }
+        public string FileData { get; set; }
 
         public virtual Item Item { get; set; }
     }

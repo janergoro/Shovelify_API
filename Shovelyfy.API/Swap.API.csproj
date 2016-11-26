@@ -95,13 +95,16 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\AddModels\LikeAddModel.cs" />
+    <Compile Include="Controllers\LikeController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DAL\IUsersRepository.cs" />
     <Compile Include="DAL\SwapDbContext.cs" />
     <Compile Include="DAL\UsersRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddModels\ItemAndPicutreAddModelcs.cs" />
     <Compile Include="Models\AddModels\UserAddModel.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Like.cs" />
@@ -111,6 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\swapswip.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
