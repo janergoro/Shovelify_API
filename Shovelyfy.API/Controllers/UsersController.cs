@@ -33,6 +33,13 @@ namespace Swap.API.Controllers
                 return BadRequest(ModelState);
             }
 
+            if(db.Users.Any(x => x.FaceBookUniqueId == user.FaceBookUniqueId))
+            {
+
+                var ux =  db.Users.Where(x => x.FaceBookUniqueId == user.FaceBookUniqueId).First();
+            return CreatedAtRoute("DefaultApi", new { id = ux.UserId }, ux);
+            }
+
             //return new System.Web.Http.Results.OkResult(this);
 
             var u = new User

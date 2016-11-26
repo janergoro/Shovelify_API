@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
+    <Compile Include="Controllers\ItemWithMatchedItemsViewModel.cs" />
     <Compile Include="Models\AddModels\LikeAddModel.cs" />
     <Compile Include="Controllers\LikeController.cs" />
     <Compile Include="Controllers\UsersController.cs" />

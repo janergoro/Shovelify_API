@@ -66,10 +66,27 @@ namespace Swap.API.Controllers
         }
 
         // GET: api/Items/5
-        [ResponseType(typeof(Item))]
+        [HttpGet]
+        [ActionName("Get")]
+
+        [ResponseType(typeof(ItemWithMatchedItemsViewModel))]
         public async Task<IHttpActionResult> GetItem(int id)
         {
-            Item item = await db.Items.FindAsync(id);
+            Item plainItem = await db.Items.FindAsync(id);
+            var matches = db.Likes.Where(x => x.LikedItem.ItemId == id).ToList();
+            ItemWithMatchedItemsViewModel item = new ItemWithMatchedItemsViewModel
+            {
+                ItemId = plainItem.ItemId,
+                Description = plainItem.Description,
+                PictureData = db.Pictures.First(x => x.Item.ItemId == plainItem.ItemId).FileData,
+                Value = (int)plainItem.Value,
+                DealType = (int)plainItem.DealType,
+                MatchCount = matches.Count,
+                Matches = matches.Select(x => new ItemWithPictures { ItemId = x.LikingItem.ItemId,
+                    PictureData = db.Pictures.First(p => p.Item.ItemId == x.LikingItem.ItemId).FileData,
+
+                }).ToArray(),
+            };
             if (item == null)
             {
                 return NotFound();
